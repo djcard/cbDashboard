@@ -67,4 +67,4 @@ Again, any module can assign these properties in their ModuleConfig (and can sub
     {"label":"Ecosystem Summary","view":"branchReport","module":"ecoSystemSummary"}
 ]`
 
-Higher up on this page, we established "myZone" as a "tab" zone. By using "myZone" as the setting key for this module, you can list views which should appear as tabs in that zone. The "label" will appear in the tab itself and, when clicked, will show the rendered content for referenced view and mmodule.
+Higher up on this page, we established "myZone" as a "tab" zone. By using "myZone" as the setting key for this module, you can list views which should appear as tabs in that zone. The "label" will appear in the tab itself and, when clicked, will show the rendered content for referenced view and module.
