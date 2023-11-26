@@ -57,7 +57,8 @@ An example view might look like this:
             #getInstance("cbDashboard@cbDashboard").tabs("myZone")#
         </cfoutput>
     </div>
-</div>```
+</div>
+```
 
 
 ## Assigning a view to a zone
