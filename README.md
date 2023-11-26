@@ -13,13 +13,12 @@ Tabs - The rendered views and other data are stored in an array of structs with 
 
 Flex - The rendered views are stored in an array which are then rendered inside a flexbox. An example could be a panel dashboard.
 
-
 ## Declaring Zones
 
 Zones can be set either in the ModuleConfig for a module or in the config/Coldbox.cfc using this format:
 `cbDashboardZones:[
-				{"key":	"ftdiMainTabs","type": "tabs", "top":true}
-			]   `
+    {"key": "myZone","type": "tabs", "top":true}
+]`
 
 Key - This is the name of the zone being set
 type - This indicates the type of rendering which will be done. 
