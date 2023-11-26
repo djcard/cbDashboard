@@ -42,22 +42,21 @@ By default, cbDashboard uses its default view. However, this is a very simple pa
 
 An example view might look like this:
 
-`<div class="container-fluid">
-    <div class="row">
-        <div class="col">
+`&lt;div class="container-fluid"&lt;
+    &lt;div class="row"&lt;
+        &lt;div class="col"&lt;
             Welcome to My Dashboard
-        </div>
-        <div class="col">
+        &lt;/div&lt;
+        &lt;div class="col"&lt;
             Name etc
-        </div>
-    </div>
-    <div class="row">
-        <cfoutput>
+        &lt;/div&lt;
+    &lt;/div&lt;
+    &lt;div class="row"&lt;
+        &lt;cfoutput&lt;
             #getInstance("cbDashboard@cbDashboard").tabs("myZone")#
-        </cfoutput>
-    </div>
-</div>`
-
+        &lt;/cfoutput&lt;
+    &lt;/div&lt;
+&lt;/div&lt;`
 
 ## Assigning a view to a zone
 
