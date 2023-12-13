@@ -1,21 +1,21 @@
 {
-    "author":"",
+    "author":"Dan Card",
     "bugs":"",
     "changelog":"",
     "contributors":[],
-        "dependencies":{
+    "dependencies":{
         "uime":"^0.0.5"
-        },
-    "description":"",
+    },
+    "description":"A UI tool for Coldbox to facilitate programmatically adding views from various modules to one cohesive UI.",
     "devDependencies":{},
-    "documentation":"",
+    "documentation":"https://github.com/djcard/cbDashboard",
     "homepage":"",
     "ignore":[
         "**/.*",
         "/test/",
         "/tests/"
     ],
-        "installPaths":{
+    "installPaths":{
         "uime":"modules/uime/"
     },
     "instructions":"",
@@ -27,19 +27,19 @@
         }
     ],
     "location":"ForgeboxStorage",
-    "name":"My Package",
+    "name":"CBDashboard",
     "private":false,
-    "projectURL":"",
+    "projectURL":"https://github.com/djcard/cbDashboard",
     "reinitWatchDelay":500,
     "reinitWatchDirectory":"",
     "reinitWatchPaths":"",
     "repository":{
-        "type":"",
-        "URL":""
+        "type":"git",
+        "URL":"https://github.com/djcard/cbDashboard.git"
     },
     "scripts":{},
     "shortDescription":"A sweet package",
-    "slug":"my-package",
+    "slug":"cbDashboard",
     "testbox":{
         "bundles":"",
         "directory":"tests.specs",
@@ -61,5 +61,5 @@
         "watchPaths":"**.cfc"
     },
     "type":"modules",
-    "version":"0.0.0"
+    "version":"0.0.4"
 }
