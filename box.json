@@ -4,7 +4,8 @@
     "changelog":"",
     "contributors":[],
     "dependencies":{
-        "uime":"^0.0.5"
+        "uime":"^0.0.5",
+        "cbDashboard":"^0.0.9"
     },
     "description":"A UI tool for Coldbox to facilitate programmatically adding views from various modules to one cohesive UI.",
     "devDependencies":{},
@@ -16,7 +17,8 @@
         "/tests/"
     ],
     "installPaths":{
-        "uime":"modules/uime/"
+        "uime":"modules/uime/",
+        "cbDashboard":"modules/cbDashboard/"
     },
     "instructions":"",
     "keywords":[],
@@ -63,5 +65,5 @@
         "watchPaths":"**.cfc"
     },
     "type":"modules",
-    "version":"0.0.9"
+    "version":"0.0.10"
 }
