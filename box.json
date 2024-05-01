@@ -37,7 +37,9 @@
         "type":"git",
         "URL":"https://github.com/djcard/cbDashboard.git"
     },
-    "scripts":{},
+    "scripts":{
+        "postInstall":"task run"
+    },
     "shortDescription":"A sweet package",
     "slug":"cbDashboard",
     "testbox":{
@@ -61,5 +63,5 @@
         "watchPaths":"**.cfc"
     },
     "type":"modules",
-    "version":"0.0.8"
+    "version":"0.0.9"
 }
