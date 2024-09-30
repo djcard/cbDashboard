@@ -1,0 +1,11 @@
+{
+    "defaultView": "homepage/index",
+    "defaultViewModule": "cbDashboard",
+    "cbDashboardZones":[
+        {"key":	"cbDashboardDemo","type": "tabs", "top":true}
+    ],
+    "cbDashboardDemo":[
+        {"label":"Demo Tab","view":"homepage/demoTab","module":"cbDashboard","order":2},
+        {"label":"Demo Tab 2","view":"homepage/demoTab2","module":"cbDashboard","order":3, "event":"dashboardHandler1.demoHandler"}
+    ]
+}

@@ -71,10 +71,7 @@ component {
 		parentSettings = { defaultEvent : "cbDashboard:homepage.index" };
 
 		// module settings - stored in modules.name.settings
-		settings = {
-			"defaultView": "homepage/index",
-			"defaultViewModule": "cbDashboard"
-		};
+
 
 		// Layout Settings
 		layoutSettings = { defaultLayout : "" };

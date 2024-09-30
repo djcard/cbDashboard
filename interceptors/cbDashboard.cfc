@@ -4,53 +4,66 @@
 
 component accessors="true" extends="coldbox.system.Interceptor" {
 
-	typeBreakdown = {
-		"page": [],
-		"tabs": []
-	}
+	typeBreakdown = { "page" : [], "tabs" : [] }
 
 	function preLayout( event ){
-		var dL   = controller.getModuleSettings( "cbDashboard" ).keyExists( "defaultLayout" ) 
-			? controller.getModuleSettings( "cbDashboard" ).defaultLayout 
-			: "homepage/index";
-		var dLM = controller.getModuleSettings( "cbDashboard" ).keyExists( "defaultLayoutModule" ) 
-			? controller.getModuleSettings( "cbDashboard" ).defaultLayoutModule 
-			: "cbDashboard";
-		event.setLayout( name = dL, module = dLM );
+		if ( !event.getCurrentView().len() ) {
+			var dL = controller.getModuleSettings( "cbDashboard" ).keyExists( "defaultLayout" )
+			 ? controller.getModuleSettings( "cbDashboard" ).defaultLayout
+			 : "homepage/index";
+			var dLM = controller.getModuleSettings( "cbDashboard" ).keyExists( "defaultLayoutModule" )
+			 ? controller.getModuleSettings( "cbDashboard" ).defaultLayoutModule
+			 : "cbDashboard";
+			event.setLayout( name = dL, module = dLM );
 
-		var dV   = controller.getModuleSettings( "cbDashboard" ).keyExists( "defaultView" ) 
-			? controller.getModuleSettings( "cbDashboard" ).defaultView 
-			: "homepage/index";
-		var dVM = controller.getModuleSettings( "cbDashboard" ).keyExists( "defaultViewModule" ) 
-			? controller.getModuleSettings( "cbDashboard" ).defaultViewModule 
-			: "cbDashboard";
-		event.setView( view = dV, module = dVM );
+			var dV = controller.getModuleSettings( "cbDashboard" ).keyExists( "defaultView" )
+			 ? controller.getModuleSettings( "cbDashboard" ).defaultView
+			 : "homepage/index";
+			var dVM = controller.getModuleSettings( "cbDashboard" ).keyExists( "defaultViewModule" )
+			 ? controller.getModuleSettings( "cbDashboard" ).defaultViewModule
+			 : "cbDashboard";
+			event.setView( view = dV, module = dVM );
 
-		controller
-			.getSetting( "dashboardZones" )
-			.each( function( zone ){
-				var data = "";
-				controller
-					.getSetting( "cbDashboard#zone.key#", [] )
-					.each( function( item ){
-						if(zone.type=="tabs"){
-							data= isSimpleValue(data) ? [] : data;
-							item["content"] = view(view=item.view,module=item.module,args = item.keyExists( "args" ) ? item.args : {} );
-							if(item.keyExists("order")){
-								data = data.insertAt(item.order,item);
-							} else {
-								data.append(item);
+			controller
+				.getSetting( "dashboardZones" )
+				.each( function( zone ){
+					var data = "";
+					controller
+						.getSetting( "cbDashboard#zone.key#", [] )
+						.each( function( item ){
+							try {
+								if ( zone.type == "tabs" ) {
+									data = isSimpleValue( data ) ? [] : data;
+									if ( item.keyExists( "event" ) ) {
+										runEvent( event = "#item.module#:#item.event#" );
+										systemOutput( "I need to run event #item.event# in module #item.module#" );
+									}
+
+									item[ "content" ] = view(
+										view   = item.view,
+										module = item.module,
+										args   = item.keyExists( "args" ) ? item.args : {}
+									);
+									if ( item.keyExists( "order" ) && data.len() > item.order ) {
+										data = data.insertAt( item.order, item );
+									} else {
+										data.append( item );
+									}
+								}
+								else 	if( item.keyExists( "view" ) ){
+									data = data & view(
+										view   = item.view,
+										module = item.module,
+										args   = item.keyExists( "args" ) ? item.args : {}
+									);
+								}
+							} catch ( any err ) {
+								systemOutput( "The #item.view# from the #item.module# was not able to be processed: #err.message#" );
 							}
-						} else 	if ( item.keyExists( "view" ) ) {
-							data = data & view(
-								view   = item.view,
-								module = item.module,
-								args   = item.keyExists( "args" ) ? item.args : {}
-							);
-						}
-					} );
-				controller.setSetting( "cbDashboard#zone.key#Rendered", data );
-			} );
+						} );
+					controller.setSetting( "cbDashboard#zone.key#Rendered", data );
+				} );
+		}
 	}
 	/***
 	 * After all modules have loaded, this cycles through all of the "pluggable" areas of the SiteModeller views, and assembles the siteModller views from the components modules
@@ -81,8 +94,8 @@ component accessors="true" extends="coldbox.system.Interceptor" {
 	 * @keyName The name of the module which is being processed
 	 * @format  What type of rendering that view is expecting
 	 **/
-	function createKey( keyName, pageType="page" ){
-		var sourceData = typeBreakdown.keyExists(arguments.pageType) ? typeBreakdown[arguments.pageType] : [];
+	function createKey( keyName, pageType = "page" ){
+		var sourceData = typeBreakdown.keyExists( arguments.pageType ) ? typeBreakdown[ arguments.pageType ] : [];
 		controller
 			.getConfigSettings()
 			.modules
